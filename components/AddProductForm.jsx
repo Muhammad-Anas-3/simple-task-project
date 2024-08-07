@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const Form = () => {
+const AddProductForm = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
@@ -73,4 +73,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddProductForm;

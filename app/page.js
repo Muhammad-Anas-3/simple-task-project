@@ -1,4 +1,4 @@
-import Form from "@/components/Form";
+import AddProductForm from "@/components/AddProductForm";
 import ProductListing from "@/components/ProductListing";
 import Product from "@/models/product_schema";
 
@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <div className="w-[80vw] mx-auto">
-      <Form />
+      <AddProductForm />
       <div className="mt-4 overflow-auto w-[85%] mx-auto">
         <ProductListing data={data} />
       </div>
