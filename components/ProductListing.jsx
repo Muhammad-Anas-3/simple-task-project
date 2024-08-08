@@ -9,7 +9,6 @@ const ProductListing = () => {
   const fetchProducts = async () => {
     try {
       const products = await axios.get("/api/getProducts");
-      console.log(products);
       setProducts(products.data);
     } catch (error) {
       console.error("Cannot fetch products from DB:", error);
