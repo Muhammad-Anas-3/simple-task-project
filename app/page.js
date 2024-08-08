@@ -1,18 +1,18 @@
-import AddProductForm from "@/components/AddProductForm";
+'use client'
+
 import ProductListing from "@/components/ProductListing";
-import Product from "@/models/product_schema";
+import Link from "next/link";
 
-export default async function Home() {
-
-  const products = await Product.find({});
-  const data = JSON.stringify(products)
-
+export default function Home() {
 
   return (
-    <div className="w-[80vw] mx-auto">
-      <AddProductForm />
+    <div className="w-[80vw] mx-auto mt-10">
+      <div className="text-center">
+
+        <Link href={'/addproducts'} className="py-[5px] px-[10px] bg-blue-500 text-white rounded ">Add New Product</Link>
+      </div>
       <div className="mt-4 overflow-auto w-[85%] mx-auto">
-        <ProductListing data={data} />
+        <ProductListing />
       </div>
     </div>
   );

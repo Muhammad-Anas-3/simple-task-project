@@ -20,7 +20,7 @@ const AddProductForm = () => {
 
     try {
       await axios.post("/api/addproduct", productData);
-      router.refresh();
+      router.push('/');
       setPrice(0);
       setName("");
     } catch (error) {

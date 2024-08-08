@@ -1,18 +1,32 @@
 "use client";
 
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const ProductListing = ({ data }) => {
-  const products = JSON.parse(data);
+const ProductListing = () => {
+  const [products, setProducts] = useState([]);
 
-  const router = useRouter();
+  const fetchProducts = async () => {
+    try {
+      const products = await axios.get("/api/getProducts");
+      console.log(products);
+      setProducts(products.data);
+    } catch (error) {
+      console.error("Cannot fetch products from DB:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const deleteProduct = async (id) => {
+    const confirmDelete = window.confirm("Do you want to delete this product?");
+    if (!confirmDelete) return;
+
     try {
       await axios.delete(`/api/deleteproduct/${id}`);
-      router.refresh();
+      fetchProducts();
     } catch (error) {
       console.error("Error deleting product:", error);
     }
