@@ -25,7 +25,7 @@ const ProductListing = () => {
 
     try {
       await axios.delete(`/api/deleteproduct/${id}`);
-      fetchProducts();
+      await fetchProducts();
     } catch (error) {
       console.error("Error deleting product:", error);
     }
